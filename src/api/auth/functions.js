@@ -16,7 +16,7 @@ import {
   getFirestore,
 } from 'firebase/firestore';
 
-import app from '../../config/firebaseConfig';
+import app from '../../config/fia';
 
 const auth = getAuth(app);
 const db = getFirestore(app);
