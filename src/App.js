@@ -1,24 +1,34 @@
-import logo from './logo.svg';
 import './App.css';
+import Login from './pages/auth/Login';
+import { BrowserRouter, Routes, Route, Redirect } from 'react-router-dom';
+import MainPage from './pages/MainPage';
+import Register from './pages/auth/Register';
+import { useState } from 'react';
+
+import Reset from './pages/auth/Reset';
 
 function App() {
+  const [sideBarOpened, setSideBarOpened] = useState(false);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        {' '}
+        <Route path="/login" element={<Login />} />
+        <Route
+          path="/dash"
+          element={
+            <MainPage
+              sideBarOpened={sideBarOpened}
+              setSideBarOpened={setSideBarOpened}
+              url="/dash"
+            />
+          }
+        />
+        <Route path="/register" element={<Register />} />
+        <Route path="/reset" element={<Reset />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 
