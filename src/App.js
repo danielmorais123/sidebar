@@ -6,6 +6,7 @@ import Register from './pages/auth/Register';
 import { useState } from 'react';
 
 import Reset from './pages/auth/Reset';
+import Calendar from './pages/Calendar';
 
 function App() {
   const [sideBarOpened, setSideBarOpened] = useState(false);
@@ -16,17 +17,18 @@ function App() {
         {' '}
         <Route path="/login" element={<Login />} />
         <Route
-          path="/dash"
+          path="/"
           element={
             <MainPage
               sideBarOpened={sideBarOpened}
               setSideBarOpened={setSideBarOpened}
-              url="/dash"
+              url="/"
             />
           }
         />
         <Route path="/register" element={<Register />} />
         <Route path="/reset" element={<Reset />} />
+        <Route path="/calendar" element={<MainPage url="/calendar" />} />
       </Routes>
     </BrowserRouter>
   );

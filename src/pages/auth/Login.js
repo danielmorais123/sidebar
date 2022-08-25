@@ -14,7 +14,7 @@ import { Lock } from '@mui/icons-material';
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [user, loading, error] = useAuthState(auth);
+  const [user, loading] = useAuthState(auth);
   const navigate = useNavigate();
 
   useEffect(() => {
@@ -22,7 +22,7 @@ const Login = () => {
       // maybe trigger a loading screen
       return;
     }
-    if (user) navigate('/dash');
+    if (user) navigate('/');
   }, [user, loading]);
 
   return (

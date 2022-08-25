@@ -1,10 +1,6 @@
 import React from 'react';
 import AccordionTab from './Accordion';
-import Drawer from './Drawer';
-import SideBar from './SideBar';
 import TableRow from './TableRow';
-import TimeLineJS from './TimeLineJS';
-import UserCard from './UserCard';
 import UsersList from './UsersList';
 
 const Dashboard = (props) => {

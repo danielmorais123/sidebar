@@ -3,11 +3,12 @@ import React, { useState } from 'react';
 import { faBars, faSearch } from '@fortawesome/free-solid-svg-icons';
 import { NotificationsNoneOutlined } from '@mui/icons-material';
 import { Avatar, Button } from '@mui/material';
-import userpic from '../assets/img/user.svg';
-import MenuItem from './MenuItem';
-import { auth } from '../api/auth/functions';
+import logo from '../../assets/img/logo.svg';
+import MenuItem from '../MenuItem';
+import { auth } from '../../api/auth/functions';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import AvatarUser from './AvatarUser';
+import AvatarUser from '../AvatarUser';
+import SearchUser from '../inputs/SearchUser';
 
 const Navbar = (props) => {
   const [showMenu, setShowMenu] = useState(false);
@@ -37,11 +38,9 @@ const Navbar = (props) => {
     setShowNotifications(true);
   };
 
-  console.log(sideBarOpened);
-
   return (
     <div
-      className={`bg-gray-200 p-3 flex items-center justify-between sm:justify-around ${
+      className={` p-3 flex items-center justify-between md:justify-around ${
         sideBarOpened ? 'hidden xs:flex' : 'flex'
       } `}
     >
@@ -51,13 +50,7 @@ const Navbar = (props) => {
           onClick={() => setSideBarOpened(!sideBarOpened)}
           className="cursor-pointer"
         />
-        <div className="ml-10 sm:w-auto  bg-gray-300 p-2 sm:rounded-full rounded-md transition ease-in-out delay-100 cursor-pointer">
-          <FontAwesomeIcon icon={faSearch} />
-          <input
-            className="bg-gray-300 border-none border-transparent outline-none pl-3 text-sm hidden sm:inline-flex "
-            placeholder="Search"
-          />
-        </div>
+        <SearchUser />
       </div>
       <div className="flex items-center relative">
         <NotificationsNoneOutlined

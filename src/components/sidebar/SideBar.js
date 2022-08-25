@@ -12,26 +12,19 @@ import {
 } from 'react-icons/hi';
 import React from 'react';
 import { useAuthState } from 'react-firebase-hooks/auth';
-import { auth } from '../api/auth/functions';
-import { logout } from '../api/auth/functions';
+import { auth } from '../../api/auth/functions';
+import { logout } from '../../api/auth/functions';
 import { useNavigate } from 'react-router-dom';
 
-const SideBar = (props) => {
-  const { sideBarOpened, setSideBarOpened } = props;
+const SideBar = () => {
   const [user] = useAuthState(auth);
-  const navigation = useNavigate();
+
   return (
-    <div
-      className={`w-fit  relative top-0 left-0 h-full ${
-        sideBarOpened ? 'hidden md:block' : 'hidden'
-      }`}
-    >
+    <div className={`w-fit  relative top-0 left-0 h-full hidden md:block`}>
       <Sidebar aria-label="Sidebar with call to action button example ">
         <Sidebar.Items>
           <Sidebar.ItemGroup>
-            <Sidebar.Item href="#" icon={HiChartPie}>
-              Dashboard
-            </Sidebar.Item>
+            <Sidebar.Item icon={HiChartPie}>Dashboard</Sidebar.Item>
             <Sidebar.Item href="/calendar" icon={HiCalendar}>
               Calendar
             </Sidebar.Item>
@@ -44,15 +37,10 @@ const SideBar = (props) => {
             <Sidebar.Item href="#" icon={HiUser}>
               Profile
             </Sidebar.Item>
-            {user ? (
-              <Sidebar.Item href="#" icon={HiLogout} onClick={logout}>
-                Sign Out
-              </Sidebar.Item>
-            ) : (
-              <Sidebar.Item href="#" icon={HiArrowSmRight}>
-                Sign In
-              </Sidebar.Item>
-            )}
+
+            <Sidebar.Item href="#" icon={HiLogout} onClick={logout}>
+              Sign Out
+            </Sidebar.Item>
           </Sidebar.ItemGroup>
         </Sidebar.Items>
         <Sidebar.CTA>

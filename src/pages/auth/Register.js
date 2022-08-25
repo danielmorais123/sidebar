@@ -9,18 +9,17 @@ import { Lock } from '@mui/icons-material';
 const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
-  const [name, setName] = useState('');
-  const [user, loading, error] = useAuthState(auth);
+
+  const [user, loading] = useAuthState(auth);
   const navigation = useNavigate();
 
   useEffect(() => {
     if (loading) return;
-    if (user) navigation('/dash');
+    if (user) navigation('/');
   }, [user, loading]);
 
   const register = () => {
-    if (!name) alert('Please enter name');
-    registerWithEmailAndPassword(name, email, password);
+    registerWithEmailAndPassword(email, password);
   };
 
   return (
